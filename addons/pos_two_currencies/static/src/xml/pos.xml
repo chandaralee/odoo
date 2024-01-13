@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="OrderWidget" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('subentry')]" position="after">
+            <div class="subentry">
+                Total (KHR):
+                <span class="value">
+                    <t t-esc="props.khr" />
+                </span>
+            </div>
+        </xpath>
+    </t>
+
+    <!-- <t t-name="OrderWidget" t-inherit="point_of_sale.CustomerFacingDisplayOrderLines" t-inherit-mode="extension" owl="1">
+        <xpath expr="//OrderWidget" position="replace">
+            <OrderWidget total="state.total" tax="state.tax" khr="state.khr" checkin="state.checkin" checkout="state.checkout" partner="state.partner"/>
+        </xpath>
+    </t> -->
+
+    <t t-name="OrderDetails" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension" owl="1">
+        <xpath expr="//OrderWidget" position="replace">
+            <OrderWidget total="total" tax="tax" khr="khr" checkin="checkin" checkout="checkout" partner="partner"/>
+        </xpath>
+    </t>
+
+    <t t-name="PaymentScreenStatus" t-inherit="point_of_sale.PaymentScreenStatus" t-inherit-mode="extension"  owl="1">
+        <xpath expr="//div[hasclass('total')]" position="after">
+            <div style="padding:0;font-size:50px;" class="total">
+                Or
+            </div>
+            <div style="padding:0;font-size:50px;"  class="total">
+                <t t-esc="totalDueTextkhr" />
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('payment-status-total-due')]" position="after">
+            <div style="padding-top: 0px;" class="payment-status-total-due">
+                <span class="label">Total Due (KHR): </span>
+                <span>
+                    <t t-esc="totalDueTextkhr" />
+                </span>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('payment-status-change')]" position="after">
+            <div class="payment-status-total-due">
+                <span class="label">Change (KHR)</span>
+                <span><t t-esc="changeTextkhr" /></span>
+            </div>
+        </xpath>
+    </t>
+
+</templates>

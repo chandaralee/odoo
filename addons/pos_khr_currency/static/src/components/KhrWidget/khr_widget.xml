@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<t t-name="pos_khr_currency.KhrWidget" t-inherit="point_of_sale.OrderWidget" t-inherit-mode="extension">
+    <xpath expr="//div[hasclass('subentry')]" position="before">
+        <!-- <xpath expr="." position="replace"> -->
+
+
+        <div class="total">
+            Total(KHR):
+            <span t-esc="totalKhr" class="value"/>
+        </div>
+
+
+    </xpath>
+
+
+</t>

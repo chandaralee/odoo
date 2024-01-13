@@ -19,5 +19,6 @@ export class OrderWidget extends Component {
                 ?.querySelector(".orderline.selected")
                 ?.scrollIntoView({ behavior: "smooth", block: "start" });
         });
+        clo
     }
 }
